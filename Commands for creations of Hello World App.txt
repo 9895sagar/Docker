@@ -1,0 +1,44 @@
+To create a docker installation script
+--- vi docker.sh
+
+To excecute a docker installation script
+--- bash docker.sh
+
+To create a docker installation script for adding hello world command and user in docker group
+--- vi docker.sh
+--- sudo docker run hello-world
+--- sudo usermod -aG docker ubuntu
+
+To Install git
+--- apt install git -y
+--- sudo apt install git -y
+
+To check path of git
+--- which git
+
+To cloning the git repository
+--- git clone https://github.com/iam-veeramalla/Docker-Zero-to-Hero.git
+--- ls
+--- cd Docker-Zero-to-Hero
+--- ls
+--- cd examples
+--- ls
+--- vi app.py
+--- ls
+--- vi first-docker-file
+--- cd first-docker-file/
+--- ls
+--- vi Dockerfile
+
+To build Dockker image from Dockerfile
+--- docker build -t abhishekf5/my-first-docker-image:latest .
+--- sudo docker build -t abhishekf5/my-first-docker-image:latest .
+
+To create container from my first Docker image
+--- docker run -it abhishekf5/my-first-docker-image:latest
+--- sudo docker run -it abhishekf5/my-first-docker-image:latest
+
+To push docker image to docker hub
+--- docker login 
+------ To provide username and password of Dockerhub account
+--- docker push abhishekf5/my-first-docker-image:latest
