@@ -1,0 +1,20 @@
+To view ECR Repositories
+--- aws ecr describe-repositories --region ap-south-1
+
+Create a ECR repositor
+--- aws ecr create-repository --repository-name docker-testing --region ap-south-1
+
+Retrieve an authentication token and authenticate your Docker client to your registry.
+--- aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin <ACCOUNT_ID>.dkr.ecr.<REGION_NAME>.amazonaws.com
+
+Check for local docker images present and tag your image so you can push the image to this repository
+--- docker tag docker-apache2:latest <ACCOUNT_ID>.dkr.ecr.<REGION_NAME>.amazonaws.com/docker-testing:latest
+
+Push the image to your newly created AWS repository
+--- docker push <ACCOUNT_ID>.dkr.ecr.<REGION_NAME>.amazonaws.com/docker-testing:latest
+
+Check whether docker image is available in ECR using AWS Console OR CLI
+--- aws ecr describe-images --repository-name docker-testing --region us-east-1
+
+To Delete the ECR Repository use below command
+--- aws ecr delete-repository --repository-name docker-testing --region us-east-1 --force
