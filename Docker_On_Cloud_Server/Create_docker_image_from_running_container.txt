@@ -6,3 +6,34 @@ To create containers from present docker images
 --- docker run -it --name=base-image-container  ubuntu:20.04 /bin/bash
 --- sudo docker run --name=base-image-container -i -t ubuntu:20.04 /bin/bash
 
+To run various commands in latest container
+--- hostname
+--- id ec2-user
+----- Inspect Container Information:
+--- docker inspect <container_id>
+----- View Container Logs
+--- docker logs <container_id>
+----- Check Container Processes
+--- docker top <container_id>
+----- Print anything inside container
+--- echo $HOME, $USER, $PWD
+--- apt-get update && apt-get install -y wget
+--- whereis wget
+
+To open another Linux shell and run command
+--- docker diff <CONTAINER_NAME>
+--- sudo docker diff <CONTAINER_NAME>
+
+To create new image from existing running container
+--- docker commit 99a7ac739cbd ubuntudocker/ubuntu_wget
+--- sudo docker commit 99a7ac739cbd ubuntudocker/ubuntu_wget
+
+To create new container from new committed docker image
+--- sudo docker run -it ubuntudocker/ubuntu_wget:latest /bin/bash
+--- sudo docker run -it ubuntudocker/ubuntu_wget:latest /bin/bash
+
+
+
+
+
+
