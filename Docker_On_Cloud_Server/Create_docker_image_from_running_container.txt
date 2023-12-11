@@ -1,0 +1,8 @@
+To check which Docker images present in our local server or remote server
+--- docker images
+--- sudo docker images
+
+To create containers from present docker images
+--- docker run -it --name=base-image-container  ubuntu:20.04 /bin/bash
+--- sudo docker run --name=base-image-container -i -t ubuntu:20.04 /bin/bash
+
