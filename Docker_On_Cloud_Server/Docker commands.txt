@@ -1,0 +1,106 @@
+To check which Docker image are present on our servers
+--- docker images
+
+To pull specific image from docker hub
+--- docker pull ubuntu:18.04 / 20.04 /22.04
+--- docker pull centos:7
+--- docker pull debian
+--- docker pull alpine
+--- docker pull node
+--- docker pull python
+--- docker pull ruby
+--- docker pull openjdk
+--- docker pull golang
+
+To create containers from specific image
+--- docker run -i -t ubuntu:18.04 /bin/bash
+--- docker run -i -t centos:7 /bin/bash
+--- docker run -i -t debian /bin/bash
+--- docker run -i -t alpine /bin/bash
+--- docker run -i -t node /bin/bash
+--- docker run -i -t python /bin/bash
+--- docker run -i -t ruby /bin/bash
+--- docker run -i -t openjdk /bin/bash
+--- docker run -i -t golang /bin/bash
+
+To create / start a new container with a specific name
+--- docker run --name=myAmznLinuxContainer -i -t amazonlinux:latest /bin/bash 
+--- docker run --name=myUbuntuContainer -i -t ubuntu:latest /bin/bash
+--- docker run --name=myCentOs:7Container -i -t centOs:7latest /bin/bash
+--- docker run --name=myAmznDebianContainer -i -t debian:latest /bin/bash
+--- docker run --name=myAmznAlpineContainer -i -t alpine:latest /bin/bash
+--- docker run --name=myAwznNodeContainer -i -t node:latest /bin/bash
+--- docker run --name=myAwznPythonContainer -i -t python:latest /bin/bash
+--- docker run --name=myAwznRubyContainer -i -t ruby:latest /bin/bash
+--- docker run --name=myAwznJavaContainer -i -t openjdk:latest /bin/bash
+--- docker run --name=myAwznGolangContainer -i -t golang:latest /bin/bash
+
+When we create container from specific image and spacific name then use these commands inside the containers
+--- hostname
+--- id ec2-user
+----- Inspect Container Information:
+--- docker inspect <container_id>
+----- View Container Logs
+--- docker logs <container_id>
+----- Check Container Processes
+--- docker top <container_id>
+----- Print anything inside container
+--- echo $HOME, $USER, $PWD
+
+To come outside into the running container
+--- ctrl + P ctrl + Q
+
+To stop the container 
+--- docker stop myAwznLinuxContainer
+--- docker stop myAwznUbuntuContainer
+--- docker stop myAwznCentOs:7Container
+--- docker stop myAmznDebianContainer
+--- docker stop myAmznAlpineContainer
+--- docker stop myAwznNodeContaine
+--- docker stop myAwznPythonContainer
+--- docker stop myAwznRubyContainer
+--- docker stop myAwznJavaContainer
+--- docker stop myAwznGolangContainer
+
+To restart the container 
+--- docker restart myAwznLinuxContainer
+--- docker restart myAwznUbuntuContainer
+--- docker restart myAwznCentOs:7Container
+--- docker restart myAmznDebianContainer
+--- docker restart myAmznAlpineContainer
+--- docker restart myAwznNodeContaine
+--- docker restart myAwznPythonContainer
+--- docker restart myAwznRubyContainer
+--- docker restart myAwznJavaContainer
+--- docker restart myAwznGolangContainer
+
+To connect back to container prompt using docker attach
+--- docker attach myAmznLinuxContainer
+--- docker attach ubuntu:18.04
+--- docker attach centOs
+
+To see all containers which are running and stop state
+--- docker ps -a
+
+To delete the container
+--- docker rm  myAwznLinuxContainer
+--- docker rm  myAwznUbuntuContainer
+--- docker rm  myAwznCentOs:7Container
+--- docker rm  myAmznDebianContainer
+--- docker rm  myAmznAlpineContainer
+--- docker rm  myAwznNodeContaine
+--- docker rm  myAwznPythonContainer
+--- docker rm  myAwznRubyContainer
+--- docker rm  myAwznJavaContainer
+--- docker rm  myAwznGolangContainer
+
+To search docker image from docker hub registry
+--- docker search amazonlinux
+--- docker search ubuntu 
+--- docker search centOs
+
+
+
+
+
+
