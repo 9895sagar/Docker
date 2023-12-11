@@ -1,0 +1,51 @@
+To build a Docker image from a specified Dockerfile.
+--- docker build -t Hello-World . --build-arg SDLC_ARG="dev"
+--- docker build -t Node.js-Application . --build-arg SDLC_ARG="dev"
+--- docker build -t Java-Spring-Boot-Application . --build-arg SDLC_ARG="dev"
+--- docker build -t NGINX-Web-server: . --build-arg SDLC_ARG="dev"
+--- docker build -t Multi-Stage-Build . --build-arg SDLC_ARG="dev"
+
+To build a Docker image from a specified Dockerfile and Specifies the path to the Dockerfile
+--- docker build -t Hello-World -f --build-arg SDLC_ARG="dev"
+--- docker build -t Node.js-Application -f --build-arg SDLC_ARG="dev"
+--- docker build -t Java-Spring-Boot-Application -f --build-arg SDLC_ARG="dev"
+--- docker build -t NGINX-Web-server -f --build-arg SDLC_ARG="dev"
+--- docker build -t Multi-Stage-Build -f --build-arg SDLC_ARG="dev"
+
+To display a list of network-related information on a Linux system
+--- netstat -nltp
+1. n= Show numerical addresses instead of resolving hostnames or port names
+2. l= Display only listening sockets.
+3. t= Display TCP connections
+4. p= Show the process ID and the name of the program to which each socket belongs
+
+--- docker run -d -p 80:80 -t Hello-World
+--- docker run -d -p 80:80 -t Node.js-Application
+--- docker run -d -p 80:80 -t Java-Spring-Boot-Application
+--- docker run -d -p 80:80 -t NGINX-Web-server
+--- docker run -d -p 80:80 -t Multi-Stage-Build
+
+1. d: This option stands for "detached" mode
+2. -p 80:80: This option is used to publish ports
+3. -t docker-apache2: This option sets the name or UID (user identifier) for the container
+
+To create and start the container 
+--- docker run --name <container_name> -p <host_port>:<container_port> -d <container_image_label or ID>
+
+Test the content of the html file in the browser using public ip, make sure you have port 80 open in security group.
+--- curl localhost:80
+--- curl localhost:8888
+
+Checking Docker Image Size
+--- docker image ls
+--- docker image inspect <IMAGE_NAME>
+
+To check where our doctor images are stored
+--- cat /var/lib/docker/overlay2
+
+To estimate the space used by a directory or a set of directories.
+--- du -sh -m /var/lib/docker/overlay2
+
+To remove the Docker images from local server or remote server
+--- docker rmi <IMAGE_NAME>
+--- du -sh -m /var/lib/docker/overlay2
