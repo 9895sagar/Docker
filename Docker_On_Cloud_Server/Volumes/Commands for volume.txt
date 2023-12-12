@@ -8,5 +8,73 @@ Command shows the host’s /tmp directory being mounted on /var/data1, and it co
 --- cat /var/data1/test-file.html
 3. Come out to actual directory
 --- cd /var/data1/
-4. To write written from Docker file with host name as $hostname and redirect it to test-file.html
+4. To write written from Docker file with host name as $hostname and redirect it to test-file.html withor deletion
 --- echo "written from docker container with Hostname as $HOSTNAME" >> test-file.html
+
+To create container in detach mode with publishing / Exposed  the port
+--- docker run -it --name=WebApp -d -p 80:80 nginx
+
+Go to specific container and edit in specific path file 
+--- cd /usr/share/nginx/html
+
+How to we Inspecting, Debugging and Running Commands inside the Containers
+--- docker exec -it WebApp bash
+
+To read specific path file
+--- cat /usr/share/nginx/html/index.html
+
+To write written from Docker file with host name as $hostname and redirect it to html.html
+--- echo "Changing the content of the home page from Hostname as $HOSTNAME" > /usr/share/nginx/html/index.html
+
+######  Finally We create Volumes #####
+1. Check for any volumes
+--- ls /var/lib/docker/volumes/
+--- sudo ls /var/lib/docker/volumes/
+
+2. Create docker volume
+--- docker volume create datavolume
+
+3. List volumes
+--- docker volume ls
+
+4. Inspect volumes
+--- docker volume inspect datavolume
+
+5. Removing docker volumes
+--- docker volume rm datavolume
+ 
+#### Mounting a Data Volume ####
+1. Create a docker container with Mount Volume and specific path of source and destination with exposing any web application
+--- docker run -d --name=Container1 --mount source=datavolume,destination=/usr/share/nginx/html -p 80:80 nginx
+
+2. Access the nginx home page in the browser
+a. How to we Inspecting, Debugging and Running Commands inside the Containers
+--- docker exec -it Container1 bash
+
+b. To see what content is present on that directory
+--- ls /usr/share/nginx/html
+
+c. To write written from Docker file with host name as $hostname and redirect it to index.html without deletion
+--- echo "Changing the content of the home page from Hostname as $HOSTNAME" >> /usr/share/nginx/html/index.html
+
+d. Check the content of the file from host 
+--- sudo cat /var/lib/docker/volumes/datavolume/_data/index.html
+
+Now if we launched another container and check the content, since Volume is shared by bothcontainers the same file is accessible from this new container.
+1. To create a new container with specific name with bind amount volume and provide source and destination with exposing port of nginx web application
+--- docker run -d --name=Container2 --mount source=datavolume,destination=/usr/share/nginx/html -p 8888:80 nginx
+
+2. Now we Inspecting, Debugging and Running Commands inside the Containers
+--- docker exec -it Container2 bash
+
+3. Now we see that same content are present in container one and container 2 with the help of Docker Volume
+--- ls /usr/share/nginx/html
+
+4. The same line will be present in container one's html.index file and container 2 html index.file without deletion of any line
+--- echo "Changing the content of the home page from Hostname as $HOSTNAME" >> /usr/share/nginx/html/index.html
+
+Display containers information associated with an image
+--- docker container ls -a --filter "ancestor=ubuntu:20.04"
+
+Display only container id associated with an image
+--- docker container ls -a --filter "ancestor=ubuntu:20.04" -q
