@@ -1,2 +1,12 @@
 Schedule crontab 
 --- crontab -e
+
+Command shows the host’s /tmp directory being mounted on /var/data1, and it could be run to start the container
+1. To create the container from the specific volume mount
+--- docker run -v /tmp:/var/data1 -it ubuntu:20.04 bash
+2. To see what is written inside the path and the specific file
+--- cat /var/data1/test-file.html
+3. Come out to actual directory
+--- cd /var/data1/
+4. To write written from Docker file with host name as $hostname and redirect it to test-file.html
+--- echo "written from docker container with Hostname as $HOSTNAME" >> test-file.html
